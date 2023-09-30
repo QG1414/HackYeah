@@ -15,7 +15,7 @@ MonoBehaviour:
   dinosourSprite: {fileID: 21300000, guid: c438947a01291e34db8ab2df540dc13a, type: 3}
   hp: 250
   baseAttack: 8
-  evolutionType: 1
+  evolutionType: 2
   dinosourSkills:
   - skillName: Healing
     skillSprite: {fileID: 21300000, guid: 8b017f814b2311840b8a095710c62c3f, type: 3}
@@ -23,3 +23,4 @@ MonoBehaviour:
     skillDamage: 0
     skillHealing: 20
     skillDefance: 0
+    skillType: 2

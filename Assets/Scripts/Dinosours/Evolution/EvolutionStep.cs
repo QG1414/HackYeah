@@ -42,7 +42,7 @@ namespace SteelLotus.Dino.Evolution
                 }
                 else
                 {
-                    dinosourSkills.Add(skill);
+                    dinosourSkills.Add(new DinosourSkill { SkillName = skill.SkillName, SkillLevel = skill.SkillLevel, SkillSprite = skill.SkillSprite, SkillDamage = skill.SkillDamage, SkillDefance = skill.SkillDefance, SkillHealing = skill.SkillHealing, SkillType = skill.SkillType });
                 }
             }
         }
@@ -64,7 +64,8 @@ namespace SteelLotus.Dino.Evolution
     public enum EvolutionType
     {
         Carnivore,
+        Omnivore,
         Herbivore,
-        Omnivore
+        Base
     }
 }

@@ -17,13 +17,24 @@ public class FightMainController : MonoBehaviour
     [SerializeField, Scene]
     private string loadingScene;
 
+    [SerializeField]
+    private List<EnemyData> enemyData = new List<EnemyData>();
+
     private InitializeSkills initializeSkills;
 
     private ScenesController scenesController;
 
+    private int enemyIndex = 0;
+
+    public int EnemyIndex { get => enemyIndex; set => enemyIndex = value; }
+    public List<EnemyData> EnemyDataProperty { get => enemyData; set => enemyData = value; }
+
+    private int currentFightWithEnemy = 0;
+
     public void Init(ScenesController scenesController)
     {
         this.scenesController = scenesController;
+        this.enemyIndex = currentFightWithEnemy;
     }
 
 
