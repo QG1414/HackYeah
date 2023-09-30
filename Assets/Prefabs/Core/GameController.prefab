@@ -35,6 +35,7 @@ Transform:
   - {fileID: 4831828054793745916}
   - {fileID: 916984905545127160}
   - {fileID: 7110786722904067976}
+  - {fileID: 389301891818510528}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4956846033555911704
@@ -49,11 +50,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8bb05c2daca6764e850ea073fe0a5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMixer: {fileID: 24100000, guid: 87e7196d030f9024b92e1f088ad80ab5, type: 2}
   dataManager: {fileID: 3641638633401210889}
   soundManager: {fileID: 6968241930678586125}
   scenesController: {fileID: 4088530323574121916}
   addictionalMethods: {fileID: 825647380201215819}
-  mainMixer: {fileID: 24100000, guid: 87e7196d030f9024b92e1f088ad80ab5, type: 2}
+  fightMainController: {fileID: 5922817413025877744}
 --- !u!114 &825647380201215819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +68,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61cc3c35c016bdf4a907d740a3d1d1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8895933443068962044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 389301891818510528}
+  - component: {fileID: 5922817413025877744}
+  m_Layer: 0
+  m_Name: FightController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &389301891818510528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8895933443068962044}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8843892776086458630}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5922817413025877744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8895933443068962044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732a39d99b4d8914a949b02d0947c82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerEvolutionStep: {fileID: 11400000, guid: 8ab4814e33a55bc448cfaffed3448dcd, type: 2}
+  fightingScene: FightingArea
+  loadingScene: LoadingScene
 --- !u!1001 &996497902211273852
 PrefabInstance:
   m_ObjectHideFlags: 0
