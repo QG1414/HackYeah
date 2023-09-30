@@ -16,6 +16,7 @@ public class PlayerDinosour : MonoBehaviour
     {
         currentPlayerEvolutionStep.Copy(baseForm);
         currentPlayerEvolutionStep.ClearSkills();
+        currentPlayerEvolutionStep.FuseSkills(baseForm.DinosourSkills);
     }
 
     public void ChangeToNewEvolution(EvolutionStep nextStep)

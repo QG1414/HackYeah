@@ -38,6 +38,10 @@ namespace SteelLotus.Dino.Evolution
 
         public void IncreaseLevel()
         {
+
+            if (skillLevel < 0)
+                return;
+
             skillLevel += 1;
             SkillDamage = (levelMultiplayer * skillLevel + 100f) * SkillDamage / 100f;
             skillHealing = (levelMultiplayer * skillLevel + 100f) * skillHealing / 100f;

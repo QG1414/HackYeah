@@ -16,4 +16,10 @@ MonoBehaviour:
   hp: 0
   baseAttack: 0
   evolutionType: 0
-  dinosourSkills: []
+  dinosourSkills:
+  - skillName: Basic Attack
+    skillSprite: {fileID: 0}
+    skillLevel: -1
+    skillDamage: 0
+    skillHealing: 0
+    skillDefance: 0

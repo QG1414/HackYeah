@@ -27,6 +27,9 @@ namespace SteelLotus.Core
         [BoxGroup("Core"), SerializeField]
         private AddictionalMethods addictionalMethods;
 
+        [SerializeField]
+        private FightMainController fightMainController;
+
         private SettingsController settingsController;
 
         private void Awake()
@@ -44,6 +47,7 @@ namespace SteelLotus.Core
 
             settingsController = new SettingsController();
             settingsController.Init(mainMixer);
+            fightMainController.Init(scenesController);
         }
 
 
@@ -77,7 +81,8 @@ namespace SteelLotus.Core
             }
 
             return null;
-        }   
+        }
+
 
     }
 }
