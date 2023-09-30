@@ -17,7 +17,7 @@ MonoBehaviour:
   baseAttack: 7
   evolutionType: 1
   dinosourSkills:
-  - skillName: Best Defense is attack
+  - skillName: Hiling
     skillSprite: {fileID: 21300000, guid: 3dc64906069474d4887eb173c7ee0ed2, type: 3}
     skillLevel: 1
     skillDamage: 0
