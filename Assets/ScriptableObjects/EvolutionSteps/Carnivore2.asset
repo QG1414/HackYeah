@@ -17,8 +17,8 @@ MonoBehaviour:
   baseAttack: 20
   evolutionType: 0
   dinosourSkills:
-  - skillName: Slash
-    skillSprite: {fileID: 21300000, guid: 13d229cf51f3f3f47ac4fb7963719d10, type: 3}
+  - skillName: Stronger Attack
+    skillSprite: {fileID: 21300000, guid: 61cffb20eadf76846a0c484c61e1054a, type: 3}
     skillLevel: 1
     skillDamage: 30
     skillHealing: 0
