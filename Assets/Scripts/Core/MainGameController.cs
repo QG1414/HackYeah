@@ -32,6 +32,7 @@ namespace SteelLotus.Core
 
         private SettingsController settingsController;
 
+
         private void Awake()
         {
             if(Instance != null && Instance != this)

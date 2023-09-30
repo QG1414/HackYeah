@@ -15,9 +15,11 @@ public class SkillUsage : MonoBehaviour
     private DinosourSkill DinosourSkill;
 
     private EvolutionStep playerEvolutionStep;
+    private PlayerFightController playerFightController;
 
-    public void Init(DinosourSkill skillToAdd, EvolutionStep playerEvolutionStep)
+    public void Init(DinosourSkill skillToAdd, EvolutionStep playerEvolutionStep, PlayerFightController playerFightController)
     {
+        this.playerFightController = playerFightController;
         DinosourSkill = skillToAdd;
         this.playerEvolutionStep = playerEvolutionStep;
 
@@ -29,8 +31,20 @@ public class SkillUsage : MonoBehaviour
     {
         //TODO obra¿enia i animacje
         float damageDealt = playerEvolutionStep.BaseAttack + DinosourSkill.SkillDamage;
-        Debug.Log($"wyleczono: {DinosourSkill.SkillHealing}");
-        Debug.Log($"zadano: {damageDealt}");
-        Debug.Log($"Obroniono: {DinosourSkill.SkillDefance}");
+
+        switch(DinosourSkill.SkillType)
+        {
+            case SkillTypes.Attack:
+                playerFightController.Attack(damageDealt);
+                break;
+            case SkillTypes.Defense:
+                playerFightController.Defense(DinosourSkill.SkillDefance);
+                break;
+            case SkillTypes.Heal:
+                playerFightController.Heal(DinosourSkill.SkillHealing);
+                break;
+        }
+
+        playerFightController.Pass();
     }
 }

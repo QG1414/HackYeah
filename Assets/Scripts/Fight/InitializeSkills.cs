@@ -9,6 +9,9 @@ public class InitializeSkills : MonoBehaviour
     [SerializeField]
     private SkillUsage defaultSkill;
 
+    [SerializeField]
+    private PlayerFightController fightController;
+
     private FightMainController fightMainController;
 
     private List<SkillUsage> skills = new List<SkillUsage>();
@@ -25,7 +28,7 @@ public class InitializeSkills : MonoBehaviour
         foreach(DinosourSkill skill in playerEvolution.DinosourSkills)
         {
             SkillUsage skillUsage = Instantiate(defaultSkill, this.transform);
-            skillUsage.Init(skill, playerEvolution);
+            skillUsage.Init(skill, playerEvolution, fightController);
             skills.Add(skillUsage);
         }
     }
