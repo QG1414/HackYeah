@@ -69,7 +69,7 @@ namespace SteelLotus.Animation
 
         private int direction = 1;
 
-        private Vector2 tempEndingPosition;
+        private Vector2 tempEndingPosition; 
 
         private Queue<AnimatedUI> animationOrder = new Queue<AnimatedUI>();
 

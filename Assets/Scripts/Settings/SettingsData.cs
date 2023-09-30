@@ -22,5 +22,6 @@ namespace SteelLotus.Core.Settings
             this.screenResolution = screenResolution;
             this.fullscreenActive = fullscreenActive;
         }
+
     }
 }

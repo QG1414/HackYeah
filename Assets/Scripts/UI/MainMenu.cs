@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using SteelLotus.Animation;
 using SteelLotus.Core;
+using SteelLotus.Sounds;
 using SteelLotus.Core.SaveLoadSystem;
 using System.Collections;
 using UnityEngine;
@@ -34,6 +35,8 @@ namespace SteelLotus.UI
 
         private ScenesController scenesController;
 
+        private SoundManager soundManager;
+
         private bool started = false;
 
 
@@ -46,7 +49,12 @@ namespace SteelLotus.UI
 
             scenesController = MainGameController.Instance.GetFieldByType<ScenesController>();
 
+            soundManager=MainGameController.Instance.GetFieldByType<SoundManager>();
+
+            soundManager.PlayClip(soundManager.MusicSource, soundManager.MusicCollection.clips[0], true);
+
             yield return new WaitForSeconds(delayDuration);
+            soundManager.PlayOneShoot(soundManager.UISource, soundManager.UICollection.clips[4]);
             mainScreenAnimation.StartButtonAnimationIn();
         }
 
@@ -55,6 +63,7 @@ namespace SteelLotus.UI
 
         public void ContinueGame()
         {
+            
             LoadGame();
         }
 
@@ -75,6 +84,7 @@ namespace SteelLotus.UI
         public void OpenSettings()
         {
             currentPart = MainMenuParts.Settings;
+            soundManager.PlayOneShoot(soundManager.UISource, soundManager.UICollection.clips[4]);
             mainScreenAnimation.StartButtonAnimationOut();
             mainScreenAnimation.HoverSettings(true);
         }
@@ -82,6 +92,7 @@ namespace SteelLotus.UI
         public void OpenCredits()
         {
             currentPart = MainMenuParts.Credits;
+            soundManager.PlayOneShoot(soundManager.UISource, soundManager.UICollection.clips[4]);
             mainScreenAnimation.StartButtonAnimationOut();
             mainScreenAnimation.HoverCredits(true);
         }
@@ -114,12 +125,14 @@ namespace SteelLotus.UI
             }
 
             currentPart = MainMenuParts.Default;
+            soundManager.PlayOneShoot(soundManager.UISource, soundManager.UICollection.clips[4]);
             mainScreenAnimation.StartButtonAnimationIn();
         }
 
         private void ExitGame()
         {
             Application.Quit();
+            soundManager.StopAudio(soundManager.MusicSource);
         }
 
         private void StartNewGame()
@@ -127,6 +140,7 @@ namespace SteelLotus.UI
             if (started)
                 return;
             SaveSystem.DeleteAllSaves();
+            soundManager.StopAudio(soundManager.MusicSource);
             LoadGame();
         }
 
@@ -137,6 +151,7 @@ namespace SteelLotus.UI
             started = true;
             scenesController.WaitForInputAfterLoad = true;
             scenesController.NextSceneToLoad = gameScene;
+            soundManager.StopAudio(soundManager.MusicSource);
             scenesController.StartTransition(AnimationTypes.AnchoreMovement, () => SceneManager.LoadScene(loadingScene));
 
         }

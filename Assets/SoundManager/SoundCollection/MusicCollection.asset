@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: MusicCollection
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: 4d17cb7d03371cd4e89b4ca48f51fe34, type: 2}
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 6a27e800be7b47f43b30c505474c90f3, type: 3}
