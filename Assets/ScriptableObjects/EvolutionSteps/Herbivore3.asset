@@ -17,7 +17,7 @@ MonoBehaviour:
   baseAttack: 10
   evolutionType: 1
   dinosourSkills:
-  - skillName: Healing
+  - skillName: Best Defense is attack
     skillSprite: {fileID: 21300000, guid: 10244269528148b479d477ba5592a101, type: 3}
     skillLevel: 1
     skillDamage: 0
