@@ -18,7 +18,7 @@ MonoBehaviour:
   evolutionType: 0
   dinosourSkills:
   - skillName: Stronger Attack
-    skillSprite: {fileID: 21300000, guid: 474dcb6bd05bb87409bb6b8dfae5928d, type: 3}
+    skillSprite: {fileID: 21300000, guid: 61cffb20eadf76846a0c484c61e1054a, type: 3}
     skillLevel: 1
     skillDamage: 30
     skillHealing: 0
