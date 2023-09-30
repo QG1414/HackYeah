@@ -29,7 +29,8 @@ namespace SteelLotus.Intro
 
         private void Start()
         {
-            soundManager = MainGameController.Instance.GetFieldByType<SoundManager>();
+            //soundManager = MainGameController.Instance.GetFieldByType<SoundManager>();
+            soundManager= MainGameController.Instance.GetFieldByType<SoundManager>();
             scenesController = MainGameController.Instance.GetFieldByType<ScenesController>();
 
             StartCoroutine(WaitWithDelay());
