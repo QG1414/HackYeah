@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b1faefa4c847944aed2e5310083e9d, type: 3}
   m_Name: Carnivore3
   m_EditorClassIdentifier: 
-  dinosourSprite: {fileID: 0}
+  dinosourSprite: {fileID: 21300000, guid: 120304a169cb89f4eb662379dac309fc, type: 3}
   hp: 150
   baseAttack: 30
   evolutionType: 0

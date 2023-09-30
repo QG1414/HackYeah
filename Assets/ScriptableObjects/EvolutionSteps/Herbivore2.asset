@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b1faefa4c847944aed2e5310083e9d, type: 3}
   m_Name: Herbivore2
   m_EditorClassIdentifier: 
-  dinosourSprite: {fileID: 21300000, guid: c438947a01291e34db8ab2df540dc13a, type: 3}
+  dinosourSprite: {fileID: 21300000, guid: 4037eb99a5d1bff4a9e5f2e70c68b3c4, type: 3}
   hp: 250
   baseAttack: 8
   evolutionType: 2

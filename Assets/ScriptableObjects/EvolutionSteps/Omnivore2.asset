@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b1faefa4c847944aed2e5310083e9d, type: 3}
   m_Name: Omnivore2
   m_EditorClassIdentifier: 
-  dinosourSprite: {fileID: 21300000, guid: 93b2f40e970e7eb4cbee6cd846766f5f, type: 3}
+  dinosourSprite: {fileID: 21300000, guid: 3164c3630a08004458071ef1c2a561d8, type: 3}
   hp: 175
   baseAttack: 10
   evolutionType: 1
