@@ -115,6 +115,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         scenesController.NextSceneToLoad = mainMenuScene;
         scenesController.WaitForInputAfterLoad = false;
+        MainGameController.Instance.ResetData();
         scenesController.StartTransition(AnimationTypes.AnchoreMovement, () => { SceneManager.LoadScene(loadingScene); scenesController.EndTransition(AnimationTypes.AnchoreMovement, null); });
     }
 

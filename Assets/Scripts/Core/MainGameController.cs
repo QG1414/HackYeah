@@ -111,6 +111,7 @@ namespace SteelLotus.Core
             doNotReset = false;
             path.Clear();
             currentEvolutionType = EvolutionType.Base;
+            fightMainController.ResetFightIndex();
         }
 
     }
