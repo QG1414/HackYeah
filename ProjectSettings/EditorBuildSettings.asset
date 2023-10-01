@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/FightingArea.unity
     guid: 36c98d66e58f44c498fba2ac10f38ede
   - enabled: 1
-    path: Assets/EndingScene.unity
+    path: Assets/Scenes/EndingScene.unity
     guid: 0ec442c17e7be524cbfafaadf822b7cd
   m_configObjects: {}

@@ -80,4 +80,9 @@ public class FightMainController : MonoBehaviour
         
     }
 
+    public void ResetFightIndex()
+    {
+        enemyIndex = 0;
+    }
+
 }
