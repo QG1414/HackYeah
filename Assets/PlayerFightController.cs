@@ -60,7 +60,7 @@ public class PlayerFightController : MonoBehaviour
 
         BlockInteraction(true);
         turnFightController.AttackAnim.PlayAnimation(SteelLotus.Dino.Evolution.SkillTypes.Attack, strong, howMuch, turnFightController.Enemy.CalculatePercentageHealth(howMuch), turnFightController.Enemy.EnemyHealthImage);
-        //soundManager.PlayClip(soundManager.PlayerSource, soundManager.PlayerCollection.clips[1], false);
+        soundManager.PlayOneShoot(soundManager.PlayerSource, soundManager.PlayerCollection.clips[0]);
         turnFightController.Enemy.GetHit(howMuch);
     }
 
@@ -79,6 +79,7 @@ public class PlayerFightController : MonoBehaviour
         playerHP += howMuch;
 
         turnFightController.AttackAnim.PlayAnimation(SteelLotus.Dino.Evolution.SkillTypes.Heal, false, howMuch, (playerHP / playerState.HP) , PlayerHealthImage);
+        soundManager.PlayOneShoot(soundManager.PlayerSource, soundManager.PlayerCollection.clips[3]);
     }
 
     public void Defense(float howMuch)
@@ -90,7 +91,7 @@ public class PlayerFightController : MonoBehaviour
 
         inDefenseMode = true;
         demageReduction = howMuch;
-        //soundManager.PlayClip(soundManager.PlayerSource, soundManager.PlayerCollection.clips[0], false);
+        soundManager.PlayOneShoot(soundManager.PlayerSource, soundManager.PlayerCollection.clips[3]);
         turnFightController.AttackAnim.PlayAnimation(SteelLotus.Dino.Evolution.SkillTypes.Defense, false, howMuch, 0, PlayerHealthImage);
     
     }
@@ -104,7 +105,7 @@ public class PlayerFightController : MonoBehaviour
             float demageSent = howMuch - howMuch * (demageReduction / 100f);
             howMuch = howMuch * (demageReduction / 100f);
             turnFightController.AttackAnim.PlayAnimation(SteelLotus.Dino.Evolution.SkillTypes.Attack, false, demageSent, turnFightController.Enemy.CalculatePercentageHealth(demageSent), turnFightController.Enemy.EnemyHealthImage, true);
-            //soundManager.PlayClip(soundManager.PlayerSource, soundManager.PlayerCollection.clips[2], false);
+            soundManager.PlayOneShoot(soundManager.PlayerSource, soundManager.PlayerCollection.clips[2]);
             turnFightController.Enemy.GetHit(demageSent);
         }
 

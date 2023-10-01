@@ -734,7 +734,7 @@ MonoBehaviour:
   uiSource: {fileID: 4416082479483932747}
   alertCollection: {fileID: 11400000, guid: fd7217296fe48a045bff2e322f498c03, type: 2}
   alertSource: {fileID: 2572516626837051632}
-  audioMixerVolumePath: Volume
+  audioMixerVolumePath: MasterMixer
   changingMusicDuration: 2
   soundVariants: -1
 --- !u!1 &8831676361805178393

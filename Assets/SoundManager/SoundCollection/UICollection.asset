@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db1d87eba487354abe157223c2d221e, type: 3}
   m_Name: UICollection
   m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: ccd86969c366ad140a67b8e3388da498, type: 2}
+  mixer: {fileID: 24100000, guid: 87e7196d030f9024b92e1f088ad80ab5, type: 2}
   clips:
-  - {fileID: 8300000, guid: 0654a0d4de16c0943bc5e71915b24625, type: 3}
+  - {fileID: 8300000, guid: 55d33b0c333afd14b9de37fca052ea20, type: 3}
   - {fileID: 8300000, guid: 74d159193ebfd354b92ec87e3a5ea01f, type: 3}
   - {fileID: 8300000, guid: bf68db620087753448ea92a3ffae14c6, type: 3}
   - {fileID: 8300000, guid: 1a4c7ad5b20a1a94d8ea456632149084, type: 3}

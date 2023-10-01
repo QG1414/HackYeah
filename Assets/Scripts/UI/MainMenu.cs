@@ -132,7 +132,8 @@ namespace SteelLotus.UI
         private void ExitGame()
         {
             Application.Quit();
-            soundManager.StopAudio(soundManager.MusicSource);
+            //soundManager.StopAudio(soundManager.MusicSource);
+            soundManager.Mute(soundManager.MusicCollection);
         }
 
         private void StartNewGame()
@@ -140,7 +141,8 @@ namespace SteelLotus.UI
             if (started)
                 return;
             SaveSystem.DeleteAllSaves();
-            soundManager.StopAudio(soundManager.MusicSource);
+            //soundManager.StopAudio(soundManager.MusicSource);
+            soundManager.Mute(soundManager.MusicCollection);
             LoadGame();
         }
 
@@ -151,7 +153,9 @@ namespace SteelLotus.UI
             started = true;
             scenesController.WaitForInputAfterLoad = true;
             scenesController.NextSceneToLoad = gameScene;
-            soundManager.StopAudio(soundManager.MusicSource);
+            //soundManager.StopAudio(soundManager.MusicSource);
+           // soundManager.Mute(soundManager.MusicCollection);
+            soundManager.MusicSource.Pause();
             scenesController.StartTransition(AnimationTypes.AnchoreMovement, () => { SceneManager.LoadScene(loadingScene); scenesController.EndTransition(AnimationTypes.AnchoreMovement, null); });
 
         }
