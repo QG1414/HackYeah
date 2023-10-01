@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b1faefa4c847944aed2e5310083e9d, type: 3}
   m_Name: Carnivore2
   m_EditorClassIdentifier: 
-  dinosourName: 
-  dinosourDescription: 
+  dinosourName: Allosaurus
+  dinosourDescription: Allosaurus  lived 155 to 145 million years ago during the
+    Late Jurassic period. Allosaurus was a large bipedal predator for its time. Its
+    skull was light, robust, and equipped with dozens of sharp, serrated teeth. It
+    averaged 8.5 meters in length, with the largest specimens estimated as being
+    9.7 metres long.
   dinosourSprite: {fileID: 21300000, guid: 32a4b21795a411f49aad8abe0e614273, type: 3}
   hp: 125
   baseAttack: 60
