@@ -21,6 +21,8 @@ public class EnemyController : MonoBehaviour
 
     public Image EnemyHealthImage { get => enemyHealthImage; set => enemyHealthImage = value; }
 
+
+
     public void Init(EnemyData enemyData, TurnFightController turnFightController)
     {
         this.turnFightController = turnFightController;

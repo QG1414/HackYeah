@@ -3,6 +3,7 @@ using SteelLotus.Dino.Evolution;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SteelLotus.Sounds;
 
 public class TurnFightController : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class TurnFightController : MonoBehaviour
 
     private FightMainController fightMainControler;
 
+    private SoundManager soundManager;
+
     private bool playerTurn = true;
     private bool fightInProgress = false;
 
@@ -34,6 +37,8 @@ public class TurnFightController : MonoBehaviour
     private void Start()
     {
         fightMainControler = MainGameController.Instance.GetFieldByType<FightMainController>();
+        soundManager = MainGameController.Instance.GetFieldByType<SoundManager>();
+
 
         enemyController.Init(fightMainControler.EnemyDataProperty[fightMainControler.EnemyIndex], this);
         playerFightController.Init(playerEvolutionStep,this);
@@ -43,6 +48,7 @@ public class TurnFightController : MonoBehaviour
     public void StartFight()
     {
         fightInProgress = true;
+        soundManager.PlayClip(soundManager.MusicSource, soundManager.MusicCollection.clips[1], true);
     }
 
     public void PassMove()
@@ -58,6 +64,7 @@ public class TurnFightController : MonoBehaviour
         if (!playerFightController.CheckIfAlive())
         {
             playerFightController.BlockInteraction(false);
+            soundManager.StopAudio(soundManager.MusicSource);
             gameOverScreen.StartScreen();
             return;
         }
