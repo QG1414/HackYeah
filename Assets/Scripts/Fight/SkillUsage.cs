@@ -30,12 +30,15 @@ public class SkillUsage : MonoBehaviour
     public void UseSkill()
     {
         //TODO obra¿enia i animacje
-        float damageDealt = playerEvolutionStep.BaseAttack + DinosourSkill.SkillDamage;
+        float damageDealt = playerEvolutionStep.BaseAttack;
 
         switch(DinosourSkill.SkillType)
         {
             case SkillTypes.Attack:
                 playerFightController.Attack(damageDealt);
+                break;
+            case SkillTypes.StrongAttack:
+                playerFightController.Attack(damageDealt + DinosourSkill.SkillDamage, true);
                 break;
             case SkillTypes.Defense:
                 playerFightController.Defense(DinosourSkill.SkillDefance);
@@ -44,7 +47,5 @@ public class SkillUsage : MonoBehaviour
                 playerFightController.Heal(DinosourSkill.SkillHealing);
                 break;
         }
-
-        playerFightController.Pass();
     }
 }

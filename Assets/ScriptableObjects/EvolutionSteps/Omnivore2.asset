@@ -23,4 +23,4 @@ MonoBehaviour:
     skillDamage: 5
     skillHealing: 5
     skillDefance: 5
-    skillType: 1
+    skillType: 3

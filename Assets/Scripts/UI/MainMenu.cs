@@ -40,6 +40,8 @@ namespace SteelLotus.UI
         private bool started = false;
 
 
+
+
         private IEnumerator Start()
         {
             if (SaveSystem.CheckIfSaveExists())
@@ -58,12 +60,10 @@ namespace SteelLotus.UI
             mainScreenAnimation.StartButtonAnimationIn();
         }
 
-
         #region PublicButtons
 
         public void ContinueGame()
         {
-            
             LoadGame();
         }
 

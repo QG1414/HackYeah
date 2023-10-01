@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
     [SerializeField]
-    private Image enemyImage; 
+    private Image enemyImage;
+
+    [SerializeField]
+    private Image enemyHealthImage;
 
 
     private EnemyData enemyData;
@@ -14,6 +18,8 @@ public class EnemyController : MonoBehaviour
     private float enemyHP;
 
     private TurnFightController turnFightController;
+
+    public Image EnemyHealthImage { get => enemyHealthImage; set => enemyHealthImage = value; }
 
     public void Init(EnemyData enemyData, TurnFightController turnFightController)
     {
@@ -25,8 +31,9 @@ public class EnemyController : MonoBehaviour
 
     public void Attack()
     {
-        turnFightController.PlayerFight.GetHit(enemyData.BaseAttack + Random.Range(enemyData.RandomElements.x, enemyData.RandomElements.y));
-        turnFightController.PassMove();
+        float damage = enemyData.BaseAttack + Random.Range(enemyData.RandomElements.x, enemyData.RandomElements.y);
+        turnFightController.AttackAnim.PlayAnimation(SteelLotus.Dino.Evolution.SkillTypes.Attack, false, damage, turnFightController.PlayerFight.CalculatePercentageHealth(damage), turnFightController.PlayerFight.PlayerHealthImage);
+        turnFightController.PlayerFight.GetHit(damage);
     }
 
     public void GetHit(float howMuch)
@@ -39,6 +46,22 @@ public class EnemyController : MonoBehaviour
         {
             enemyHP = 0;
         }
+    }
+
+    public float CalculatePercentageHealth(float howMuch)
+    {
+        float tempHealth = enemyHP;
+
+        tempHealth -= howMuch;
+
+        if (tempHealth < 0)
+        {
+            tempHealth = 0;
+        }
+
+        tempHealth = tempHealth / enemyData.HP;
+
+        return tempHealth;
     }
 
     public bool CheckIfAlive()

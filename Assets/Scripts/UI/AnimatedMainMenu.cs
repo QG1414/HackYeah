@@ -77,7 +77,7 @@ namespace SteelLotus.Animation
 
         #region Title&ButtonsAnimation
 
-        public void StartButtonAnimationIn()
+        public void StartButtonAnimationIn(TweenCallback tweenCallback = null)
         {
             interactionsBlocker.enabled = false;
 
@@ -90,14 +90,17 @@ namespace SteelLotus.Animation
                 animationOrder.Enqueue(button);
             }
 
-            NextStepAnimation(startingPosition, tempEndingPosition, direction, 0);
+            NextStepAnimation(startingPosition, tempEndingPosition, direction, 0, tweenCallback);
         }
 
-        private void NextStepAnimation(Vector2 startingPosition, Vector2 endingPosition, int direction, int animatorNumber)
+        private void NextStepAnimation(Vector2 startingPosition, Vector2 endingPosition, int direction, int animatorNumber, TweenCallback tweenCallback)
         {
             if (animationOrder.Count == 0)
             {
-                titleAnimation.SetActionToStartAfterAnimationEnd(() => interactionsBlocker.enabled = true);
+                if(tweenCallback == null)
+                    titleAnimation.SetActionToStartAfterAnimationEnd(() => interactionsBlocker.enabled = true);
+                else
+                    titleAnimation.SetActionToStartAfterAnimationEnd(() => { interactionsBlocker.enabled = true; tweenCallback(); });
                 if (animatorNumber == 0)
                 {
                     titleAnimation.StartRectMovementAnimation(titleStartPosition, titleEndPosition, animatorNumber);
@@ -113,7 +116,7 @@ namespace SteelLotus.Animation
             Vector2 newStartingPosition = new Vector2(startingPosition.x, startingPosition.y + heightAddition);
             Vector2 newEndingPosition = new Vector2(endingPosition.x, endingPosition.y + heightAddition);
 
-            currentButton.SetActionToStartAfterAnimationEnd(() => NextStepAnimation(newStartingPosition, newEndingPosition, direction *= -1, animatorNumber));
+            currentButton.SetActionToStartAfterAnimationEnd(() => NextStepAnimation(newStartingPosition, newEndingPosition, direction *= -1, animatorNumber, tweenCallback));
 
             currentButton.StartRectMovementAnimationX(startingPosition.x * direction, endingPosition.x * direction, animatorNumber);
         }
@@ -131,7 +134,7 @@ namespace SteelLotus.Animation
                 animationOrder.Enqueue(button);
             }
 
-            NextStepAnimation(tempEndingPosition, startingPosition, direction, 1);
+            NextStepAnimation(tempEndingPosition, startingPosition, direction, 1, null);
         }
 
         #endregion Title&ButtonsAnimation

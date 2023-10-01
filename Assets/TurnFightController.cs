@@ -15,6 +15,12 @@ public class TurnFightController : MonoBehaviour
     [SerializeField]
     private EvolutionStep playerEvolutionStep;
 
+    [SerializeField]
+    private AttackAnimations attackAnimations;
+
+    [SerializeField]
+    private GameOverScreen gameOverScreen;
+
     private FightMainController fightMainControler;
 
     private bool playerTurn = true;
@@ -22,6 +28,8 @@ public class TurnFightController : MonoBehaviour
 
     public PlayerFightController PlayerFight { get => playerFightController; set => playerFightController = value; }
     public EnemyController Enemy { get => enemyController; set => enemyController = value; }
+    public AttackAnimations AttackAnim { get => attackAnimations; set => attackAnimations = value; }
+    public bool PlayerTurn { get => playerTurn; set => playerTurn = value; }
 
     private void Start()
     {
@@ -43,19 +51,19 @@ public class TurnFightController : MonoBehaviour
 
         if (!enemyController.CheckIfAlive())
         {
-            Debug.Log("player won");
+            fightMainControler.OnPlayerWin();
             return;
         }
 
         if (!playerFightController.CheckIfAlive())
         {
-            Debug.Log("enemy won");
+            playerFightController.BlockInteraction(false);
+            gameOverScreen.StartScreen();
             return;
         }
 
         if (!playerTurn)
         {
-            playerFightController.BlockInteraction(true);
             enemyController.Attack();
         }
         else

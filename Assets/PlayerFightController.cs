@@ -1,5 +1,6 @@
 using SteelLotus.Animation;
 using SteelLotus.Dino.Evolution;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,9 @@ public class PlayerFightController : MonoBehaviour
     [SerializeField]
     private GraphicRaycaster graphicRaycaster;
 
+    [SerializeField]
+    private Image playerHealthImage;
+
 
     private EvolutionStep playerState;
 
@@ -32,6 +36,8 @@ public class PlayerFightController : MonoBehaviour
     private bool inDefenseMode = false;
     private float demageReduction;
 
+    public Image PlayerHealthImage { get => playerHealthImage; set => playerHealthImage = value; }
+
     public void Init(EvolutionStep playerState, TurnFightController turnFightController)
     {
         this.turnFightController = turnFightController;
@@ -40,11 +46,13 @@ public class PlayerFightController : MonoBehaviour
         playerImage.sprite = playerState.DinosourSprite;
     }
 
-    public void Attack(float howMuch)
+    public void Attack(float howMuch, bool strong = false)
     {
         if (howMuch == 0)
             return;
 
+        BlockInteraction(true);
+        turnFightController.AttackAnim.PlayAnimation(SteelLotus.Dino.Evolution.SkillTypes.Attack, strong, howMuch, turnFightController.Enemy.CalculatePercentageHealth(howMuch), turnFightController.Enemy.EnemyHealthImage);
         turnFightController.Enemy.GetHit(howMuch);
     }
 
@@ -53,12 +61,15 @@ public class PlayerFightController : MonoBehaviour
         if (howMuch == 0)
             return;
 
+        BlockInteraction(true);
+
         if (playerHP + howMuch > playerState.HP)
         {
             playerHP = playerState.HP;
         }
 
         playerHP += howMuch;
+        Pass();
     }
 
     public void Defense(float howMuch)
@@ -66,8 +77,11 @@ public class PlayerFightController : MonoBehaviour
         if (howMuch == 0)
             return;
 
+        BlockInteraction(true);
+
         inDefenseMode = true;
         demageReduction = howMuch;
+        Pass();
     }
 
     public void GetHit(float howMuch)
@@ -78,17 +92,40 @@ public class PlayerFightController : MonoBehaviour
             inDefenseMode = false;
             float demageSent = howMuch - howMuch * (demageReduction / 100f);
             howMuch = howMuch * (demageReduction / 100f);
+            turnFightController.AttackAnim.PlayAnimation(SteelLotus.Dino.Evolution.SkillTypes.Attack, false, demageSent, turnFightController.Enemy.CalculatePercentageHealth(demageSent), turnFightController.Enemy.EnemyHealthImage, true);
             turnFightController.Enemy.GetHit(demageSent);
         }
 
         playerHP -= howMuch;
 
-        Debug.Log($"Player lost: {howMuch}hp now he has {playerHP}");
-
         if (playerHP < 0)
         {
             playerHP = 0;
         }
+    }
+
+    public float CalculatePercentageHealth(float howMuch)
+    {
+
+        float tempHealth = playerHP;
+
+        if (inDefenseMode)
+        {
+            inDefenseMode = false;
+            float demageSent = howMuch - howMuch * (demageReduction / 100f);
+            howMuch = howMuch * (demageReduction / 100f);
+        }
+
+        tempHealth -= howMuch;
+
+        if (tempHealth < 0)
+        {
+            tempHealth = 0;
+        }
+
+        tempHealth = tempHealth / playerState.HP;
+
+        return tempHealth;
     }
 
     public bool CheckIfAlive()

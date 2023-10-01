@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,12 @@ namespace SteelLotus.Animation
             animationCoroutine = StartCoroutine(WaitForSpriteChange());
         }
 
+        public void StartAnimationOneTime(TweenCallback tweenCallback)
+        {
+            imageToChange.color = new Color(imageToChange.color.r, imageToChange.color.g, imageToChange.color.b, 1);
+            StartCoroutine(WaitForSpriteChangeOneTime(tweenCallback));
+        }
+
         public void StopAnimation()
         {
             StopCoroutine(animationCoroutine);
@@ -43,6 +50,21 @@ namespace SteelLotus.Animation
                 if (currentIndex == spritesToChange.Count)
                     currentIndex = 0;
             }
+        }
+
+        private IEnumerator WaitForSpriteChangeOneTime(TweenCallback tweenCallback)
+        {
+            for (int i = 0; i < spritesToChange.Count; i++)
+            {
+                imageToChange.sprite = spritesToChange[i];
+
+                yield return new WaitForSecondsRealtime(changeTime);
+            }
+
+            imageToChange.color = new Color(imageToChange.color.r, imageToChange.color.g, imageToChange.color.b, 0);
+
+            if (tweenCallback != null)
+                tweenCallback.Invoke();
         }
     }
 }
