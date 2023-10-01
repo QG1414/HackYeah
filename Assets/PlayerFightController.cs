@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using SteelLotus.Sounds;
+using SteelLotus.Core;
 
 public class PlayerFightController : MonoBehaviour
 {
@@ -29,6 +31,8 @@ public class PlayerFightController : MonoBehaviour
 
     private EvolutionStep playerState;
 
+    private SoundManager soundManager;
+
     private float playerHP;
 
     TurnFightController turnFightController;
@@ -40,6 +44,7 @@ public class PlayerFightController : MonoBehaviour
 
     public void Init(EvolutionStep playerState, TurnFightController turnFightController)
     {
+        soundManager = MainGameController.Instance.GetFieldByType<SoundManager>();
         this.turnFightController = turnFightController;
         this.playerState = playerState;
         playerHP = this.playerState.HP;
@@ -53,6 +58,7 @@ public class PlayerFightController : MonoBehaviour
 
         BlockInteraction(true);
         turnFightController.AttackAnim.PlayAnimation(SteelLotus.Dino.Evolution.SkillTypes.Attack, strong, howMuch, turnFightController.Enemy.CalculatePercentageHealth(howMuch), turnFightController.Enemy.EnemyHealthImage);
+        soundManager.PlayClip(soundManager.PlayerSource, soundManager.PlayerCollection.clips[1], false);
         turnFightController.Enemy.GetHit(howMuch);
     }
 
@@ -82,8 +88,9 @@ public class PlayerFightController : MonoBehaviour
 
         inDefenseMode = true;
         demageReduction = howMuch;
-
+        soundManager.PlayClip(soundManager.PlayerSource, soundManager.PlayerCollection.clips[0], false);
         turnFightController.AttackAnim.PlayAnimation(SteelLotus.Dino.Evolution.SkillTypes.Defense, false, howMuch, 0, PlayerHealthImage);
+    
     }
 
     public void GetHit(float howMuch)
@@ -95,6 +102,7 @@ public class PlayerFightController : MonoBehaviour
             float demageSent = howMuch - howMuch * (demageReduction / 100f);
             howMuch = howMuch * (demageReduction / 100f);
             turnFightController.AttackAnim.PlayAnimation(SteelLotus.Dino.Evolution.SkillTypes.Attack, false, demageSent, turnFightController.Enemy.CalculatePercentageHealth(demageSent), turnFightController.Enemy.EnemyHealthImage, true);
+            soundManager.PlayClip(soundManager.PlayerSource, soundManager.PlayerCollection.clips[2], false);
             turnFightController.Enemy.GetHit(demageSent);
         }
 
