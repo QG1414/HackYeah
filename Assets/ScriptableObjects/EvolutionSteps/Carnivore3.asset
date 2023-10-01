@@ -19,8 +19,8 @@ MonoBehaviour:
     by a long, heavy tail. Relative to its large and powerful hind limbs, the forelimbs
     of Tyrannosaurus were short but unusually powerful and they had two clawed digits.
   dinosourSprite: {fileID: 21300000, guid: 120304a169cb89f4eb662379dac309fc, type: 3}
-  hp: 150
-  baseAttack: 70
+  hp: 200
+  baseAttack: 45
   evolutionType: 0
   dinosourSkills:
   - skillName: Stronger Attack

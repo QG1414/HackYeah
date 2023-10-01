@@ -20,14 +20,14 @@ MonoBehaviour:
     which was used during feeding."
   dinosourSprite: {fileID: 21300000, guid: 0252b54617788134a8744440e35bfe78, type: 3}
   hp: 150
-  baseAttack: 7
+  baseAttack: 10
   evolutionType: 1
   dinosourSkills:
-  - skillName: Hiling
+  - skillName: Heal
     skillSprite: {fileID: 21300000, guid: efa6f88d0223e4148b1acac9d90d467c, type: 3}
     skillLevel: 1
     skillDamage: 0
-    skillHealing: 20
+    skillHealing: 35
     skillDefance: 0
     skillType: 3
-    skillCooldown: 2
+    skillCooldown: 3

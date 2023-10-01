@@ -20,15 +20,15 @@ MonoBehaviour:
     with large, blunt claws on its three-fingered hands. The legs were relatively
     short, and bore blunt claws. Deinocheirus is thought to have been omnivorous.
   dinosourSprite: {fileID: 21300000, guid: 1ef1c81dbafc58c44b2bcef287e894b1, type: 3}
-  hp: 200
-  baseAttack: 15
+  hp: 275
+  baseAttack: 25
   evolutionType: 1
   dinosourSkills:
-  - skillName: Hiling
+  - skillName: Heal
     skillSprite: {fileID: 21300000, guid: 10244269528148b479d477ba5592a101, type: 3}
     skillLevel: 1
     skillDamage: 0
-    skillHealing: 20
+    skillHealing: 35
     skillDefance: 0
     skillType: 3
-    skillCooldown: 2
+    skillCooldown: 3

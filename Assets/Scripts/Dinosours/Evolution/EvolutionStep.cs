@@ -69,6 +69,8 @@ namespace SteelLotus.Dino.Evolution
 
         public void Copy(EvolutionStep evolutionStepToCopy)
         {
+            this.dinosourName = evolutionStepToCopy.dinosourName;
+            this.dinosourDescription = evolutionStepToCopy.dinosourDescription;
             this.dinosourSprite = evolutionStepToCopy.DinosourSprite;
             this.hp = evolutionStepToCopy.hp;
             this.baseAttack = evolutionStepToCopy.baseAttack;

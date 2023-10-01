@@ -19,8 +19,8 @@ MonoBehaviour:
     averaged 8.5 meters in length, with the largest specimens estimated as being
     9.7 metres long.
   dinosourSprite: {fileID: 21300000, guid: 32a4b21795a411f49aad8abe0e614273, type: 3}
-  hp: 125
-  baseAttack: 60
+  hp: 150
+  baseAttack: 30
   evolutionType: 0
   dinosourSkills:
   - skillName: Stronger Attack

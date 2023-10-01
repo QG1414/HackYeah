@@ -22,7 +22,7 @@ MonoBehaviour:
     adolescent pachycephalosaur.
   dinosourSprite: {fileID: 21300000, guid: d2b156b7d0b053041b19d922013ed3b5, type: 3}
   hp: 200
-  baseAttack: 5
+  baseAttack: 7
   evolutionType: 2
   dinosourSkills:
   - skillName: Best Defense is attack
