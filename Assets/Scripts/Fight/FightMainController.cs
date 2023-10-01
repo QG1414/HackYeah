@@ -17,6 +17,9 @@ public class FightMainController : MonoBehaviour
     [SerializeField, Scene]
     private string loadingScene;
 
+    [SerializeField, Scene]
+    private string mainGameScene;
+
     [SerializeField]
     private List<EnemyData> enemyData = new List<EnemyData>();
 
@@ -37,6 +40,10 @@ public class FightMainController : MonoBehaviour
         this.enemyIndex = currentFightWithEnemy;
     }
 
+    public void IncreaseEnemyIndex()
+    {
+        this.enemyIndex++;
+    }
 
     public void InitUI(InitializeSkills initializeSkills)
     {
@@ -50,7 +57,15 @@ public class FightMainController : MonoBehaviour
 
     public void LoadFightScene()
     {
+        MainGameController.Instance.SaveData();
         scenesController.StartTransition(SteelLotus.Animation.AnimationTypes.AnchoreMovement, () => { SceneManager.LoadScene(fightingScene); scenesController.EndTransition(SteelLotus.Animation.AnimationTypes.AnchoreMovement, null); });
+    }
+
+    public void OnPlayerWin()
+    {
+        MainGameController.Instance.DoNotReset = true;
+        IncreaseEnemyIndex();
+        scenesController.StartTransition(SteelLotus.Animation.AnimationTypes.AnchoreMovement, () => { SceneManager.LoadScene(mainGameScene); scenesController.EndTransition(SteelLotus.Animation.AnimationTypes.AnchoreMovement, null); });
     }
 
 }

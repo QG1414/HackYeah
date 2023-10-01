@@ -56,6 +56,7 @@ namespace SteelLotus.Dino.Evolution
     public enum SkillTypes
     {
         Attack,
+        StrongAttack,
         Defense,
         Heal
     }

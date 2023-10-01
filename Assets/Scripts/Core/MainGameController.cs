@@ -6,6 +6,8 @@ using SteelLotus.Sounds;
 using SteelLotus.Core.Settings;
 using SteelLotus.Core.SaveLoadSystem;
 using UnityEngine.Audio;
+using System.Collections.Generic;
+using SteelLotus.Dino.Evolution;
 
 namespace SteelLotus.Core
 {
@@ -32,6 +34,16 @@ namespace SteelLotus.Core
 
         private SettingsController settingsController;
 
+        private PlayerDinosour playerDinosour;
+
+
+        private bool doNotReset = false;
+        private List<int> path = new List<int>();
+        private EvolutionType currentEvolutionType;
+
+        public bool DoNotReset { get { return doNotReset; } set { doNotReset = value; } }
+        public List<int> Path { get { return path; } set { path = value; } }
+        public EvolutionType CurrentEvolutionType { get => currentEvolutionType; set => currentEvolutionType = value; }
 
         private void Awake()
         {
@@ -84,6 +96,22 @@ namespace SteelLotus.Core
             return null;
         }
 
+        public void SaveData()
+        {
+            currentEvolutionType = playerDinosour.CurrentEvolutionType;
+        }
+
+        public void Init(PlayerDinosour player)
+        {
+            playerDinosour = player;
+        }
+
+        public void ResetData()
+        {
+            doNotReset = false;
+            path.Clear();
+            currentEvolutionType = EvolutionType.Base;
+        }
 
     }
 }

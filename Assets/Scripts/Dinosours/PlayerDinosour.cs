@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using SteelLotus.Core;
 using SteelLotus.Dino.Evolution;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,9 +34,20 @@ public class PlayerDinosour : MonoBehaviour
 
     private void Start()
     {
-        currentPlayerEvolutionStep.Copy(baseForm);
-        currentPlayerEvolutionStep.ClearSkills();
-        currentPlayerEvolutionStep.FuseSkills(baseForm.DinosourSkills);
+        MainGameController.Instance.Init(this);
+
+        if(MainGameController.Instance.DoNotReset)
+        {
+            currentUpgradeStep = MainGameController.Instance.Path[MainGameController.Instance.Path.Count - 1];
+            MainGameController.Instance.DoNotReset = false;
+            currentEvolutionType = MainGameController.Instance.CurrentEvolutionType;
+        }
+        else
+        {
+            currentPlayerEvolutionStep.Copy(baseForm);
+            currentPlayerEvolutionStep.ClearSkills();
+            currentPlayerEvolutionStep.FuseSkills(baseForm.DinosourSkills);
+        }
     }
 
     public void ChangeToNewEvolution(EvolutionType evolutionType)
@@ -48,6 +60,7 @@ public class PlayerDinosour : MonoBehaviour
         currentEvolutionType = evolutionType;
 
         Debug.Log(currentUpgradeStep);
+        Debug.Log(currentEvolutionType);
 
         EvolutionStep newStep = null;
         switch (evolutionType)

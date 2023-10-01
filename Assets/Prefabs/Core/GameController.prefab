@@ -115,6 +115,8 @@ MonoBehaviour:
   playerEvolutionStep: {fileID: 11400000, guid: 8ab4814e33a55bc448cfaffed3448dcd, type: 2}
   fightingScene: FightingArea
   loadingScene: LoadingScene
+  mainGameScene: Level1
+  enemyData: []
 --- !u!1001 &996497902211273852
 PrefabInstance:
   m_ObjectHideFlags: 0

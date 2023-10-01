@@ -1,5 +1,6 @@
 using NaughtyAttributes;
 using SteelLotus.Animation;
+using SteelLotus.Core;
 using SteelLotus.Dino.Evolution;
 using System.Collections;
 using System.Collections.Generic;
@@ -47,12 +48,42 @@ public class EvolutionPointsController : MonoBehaviour
 
     HighlightEffect workingAnimation;
 
+    FightMainController mainController;
+
 
     private void Start()
     {
-        if (playerDinosour.CurrentEvolutionType == EvolutionType.Base)
+        mainController = MainGameController.Instance.GetFieldByType<FightMainController>();
+
+        if (MainGameController.Instance.Path.Count != 0)
+        {
+            RestoreUpgrades();
+        }
+
+        if (playerDinosour.CurrentEvolutionType == EvolutionType.Base || MainGameController.Instance.Path.Count != 0)
         {
             AddPoints();
+        }
+    }
+
+    public void RestoreUpgrades()
+    {
+        Debug.Log($"Path length: {MainGameController.Instance.Path.Count}");
+
+        for(int i=0;i < MainGameController.Instance.Path.Count; i++)
+        {
+            if (MainGameController.Instance.Path[i] == 0)
+            {
+                carvivoreUpgrades[i].UnlockUnlockedColor();
+            }
+            else if (MainGameController.Instance.Path[i] == 1)
+            {
+                omnivoreUpgrades[i].UnlockUnlockedColor();
+            }
+            else
+            {
+                herbivoreUpgrades[i].UnlockUnlockedColor();
+            }
         }
     }
 
@@ -253,6 +284,7 @@ public class EvolutionPointsController : MonoBehaviour
             case EvolutionType.Carnivore:
                 if(turnOn)
                 {
+                    MainGameController.Instance.Path.Add(0);
                     carvivoreUpgrades[level].UnlockUnlockedColor();
                 }
                 else
@@ -264,6 +296,7 @@ public class EvolutionPointsController : MonoBehaviour
             case EvolutionType.Herbivore:
                 if (turnOn)
                 {
+                    MainGameController.Instance.Path.Add(2);
                     herbivoreUpgrades[level].UnlockUnlockedColor();
                 }
                 else
@@ -275,6 +308,7 @@ public class EvolutionPointsController : MonoBehaviour
             case EvolutionType.Omnivore:
                 if (turnOn)
                 {
+                    MainGameController.Instance.Path.Add(1);
                     omnivoreUpgrades[level].UnlockUnlockedColor();
                 }
                 else
@@ -293,6 +327,11 @@ public class EvolutionPointsController : MonoBehaviour
             workingAnimation.StopAnimation();
             workingAnimation = null;
         }
+    }
+
+    public void StartFight()
+    {
+        mainController.LoadFightScene();
     }
 
 }
