@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b1faefa4c847944aed2e5310083e9d, type: 3}
   m_Name: Herbivore3
   m_EditorClassIdentifier: 
+  dinosourName: 
+  dinosourDescription: 
   dinosourSprite: {fileID: 21300000, guid: dbc8dd29a26935b47a7f08a598be70d0, type: 3}
   hp: 300
   baseAttack: 10
@@ -21,6 +23,6 @@ MonoBehaviour:
     skillSprite: {fileID: 21300000, guid: 10244269528148b479d477ba5592a101, type: 3}
     skillLevel: 1
     skillDamage: 0
-    skillHealing: 20
-    skillDefance: 0
+    skillHealing: 0
+    skillDefance: 20
     skillType: 2

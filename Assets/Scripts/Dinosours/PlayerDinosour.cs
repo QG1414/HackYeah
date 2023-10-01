@@ -4,6 +4,7 @@ using SteelLotus.Dino.Evolution;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Playables.FrameData;
 
 public class PlayerDinosour : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class PlayerDinosour : MonoBehaviour
 
     public int CurrentUpgradeStep { get => currentUpgradeStep; set => currentUpgradeStep = value; }
 
+    public EvolutionStep CurrentPlayerEvolutionStep { get => currentPlayerEvolutionStep; }
+
 
 
     private void Start()
@@ -38,7 +41,7 @@ public class PlayerDinosour : MonoBehaviour
 
         if(MainGameController.Instance.DoNotReset)
         {
-            currentUpgradeStep = MainGameController.Instance.Path[MainGameController.Instance.Path.Count - 1];
+            currentUpgradeStep = MainGameController.Instance.Path.Count - 1;
             MainGameController.Instance.DoNotReset = false;
             currentEvolutionType = MainGameController.Instance.CurrentEvolutionType;
         }
@@ -79,5 +82,43 @@ public class PlayerDinosour : MonoBehaviour
 
         currentPlayerEvolutionStep.Copy(newStep);
         currentPlayerEvolutionStep.FuseSkills(newStep.DinosourSkills);
+    }
+
+    public EvolutionStep GetNextStep(EvolutionType evolutionType)
+    {
+        int tempCurrentUpgrade = currentUpgradeStep;
+        EvolutionType tempCurrentEvolutionType;
+
+        if (currentEvolutionType != EvolutionType.Base)
+        {
+            tempCurrentUpgrade++;
+        }
+
+        tempCurrentEvolutionType = evolutionType;
+
+        EvolutionStep tempStep = new EvolutionStep();
+
+        Debug.Log(currentUpgradeStep);
+        Debug.Log(currentEvolutionType);
+
+        EvolutionStep newStep = null;
+        switch (evolutionType)
+        {
+            case EvolutionType.Carnivore:
+                newStep = carnivoreSteps[tempCurrentUpgrade];
+                break;
+            case EvolutionType.Omnivore:
+                newStep = omnivoreSteps[tempCurrentUpgrade];
+                break;
+            case EvolutionType.Herbivore:
+                newStep = herbivoreSteps[tempCurrentUpgrade];
+                break;
+        }
+
+        tempStep.Copy(newStep);
+        tempStep.FuseSkills(newStep.DinosourSkills);
+
+        return tempStep;
+
     }
 }

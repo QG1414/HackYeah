@@ -69,7 +69,8 @@ public class PlayerFightController : MonoBehaviour
         }
 
         playerHP += howMuch;
-        Pass();
+
+        turnFightController.AttackAnim.PlayAnimation(SteelLotus.Dino.Evolution.SkillTypes.Heal, false, howMuch, (playerHP / playerState.HP) , PlayerHealthImage);
     }
 
     public void Defense(float howMuch)
@@ -81,7 +82,8 @@ public class PlayerFightController : MonoBehaviour
 
         inDefenseMode = true;
         demageReduction = howMuch;
-        Pass();
+
+        turnFightController.AttackAnim.PlayAnimation(SteelLotus.Dino.Evolution.SkillTypes.Defense, false, howMuch, 0, PlayerHealthImage);
     }
 
     public void GetHit(float howMuch)
@@ -111,7 +113,6 @@ public class PlayerFightController : MonoBehaviour
 
         if (inDefenseMode)
         {
-            inDefenseMode = false;
             float demageSent = howMuch - howMuch * (demageReduction / 100f);
             howMuch = howMuch * (demageReduction / 100f);
         }
