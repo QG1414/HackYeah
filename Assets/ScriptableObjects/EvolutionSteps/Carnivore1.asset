@@ -20,7 +20,7 @@ MonoBehaviour:
     claw."
   dinosourSprite: {fileID: 21300000, guid: 900ead8886e44764d9c701b0a61164c2, type: 3}
   hp: 100
-  baseAttack: 50
+  baseAttack: 15
   evolutionType: 0
   dinosourSkills:
   - skillName: Stronger Attack

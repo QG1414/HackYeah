@@ -16,5 +16,5 @@ MonoBehaviour:
   dinosaurDescription: Test1
   dinosourSprite: {fileID: 21300000, guid: 900ead8886e44764d9c701b0a61164c2, type: 3}
   hp: 100
-  baseAttack: 50
+  baseAttack: 25
   randomElements: {x: 0, y: 5.1768775}

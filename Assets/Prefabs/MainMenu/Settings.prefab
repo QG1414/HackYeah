@@ -542,7 +542,6 @@ MonoBehaviour:
   masterVolumeSlider: {fileID: 8874949083133353046}
   musicVolumeSlider: {fileID: 4337350041692425852}
   effectsVolumeSlider: {fileID: 5760887348479565386}
-  resolutionDropdown: {fileID: 0}
   fullscreenToggle: {fileID: 6785735588260138863}
 --- !u!225 &380954815449055375
 CanvasGroup:
@@ -1836,7 +1835,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 18}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6305424645667889157
 CanvasRenderer:
@@ -2300,7 +2299,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 18}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7834185760119386520
 CanvasRenderer:
@@ -2375,7 +2374,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 18}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &957491192131887946
 CanvasRenderer:

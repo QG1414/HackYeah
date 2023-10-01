@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dinosaurName: Test3
   dinosaurDescription: Test3
-  dinosourSprite: {fileID: 21300000, guid: 120304a169cb89f4eb662379dac309fc, type: 3}
+  dinosourSprite: {fileID: 21300000, guid: be7a5508df1a96b48b364c4c7d9a2c31, type: 3}
   hp: 200
-  baseAttack: 10
+  baseAttack: 50
   randomElements: {x: 0, y: 6.7587013}
