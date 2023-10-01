@@ -26,3 +26,4 @@ MonoBehaviour:
     skillHealing: 0
     skillDefance: 20
     skillType: 2
+    skillCooldown: 4

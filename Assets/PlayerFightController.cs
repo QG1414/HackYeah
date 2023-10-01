@@ -42,6 +42,8 @@ public class PlayerFightController : MonoBehaviour
 
     public Image PlayerHealthImage { get => playerHealthImage; set => playerHealthImage = value; }
 
+    public Action reduceCooldown;
+
     public void Init(EvolutionStep playerState, TurnFightController turnFightController)
     {
         soundManager = MainGameController.Instance.GetFieldByType<SoundManager>();
@@ -58,7 +60,7 @@ public class PlayerFightController : MonoBehaviour
 
         BlockInteraction(true);
         turnFightController.AttackAnim.PlayAnimation(SteelLotus.Dino.Evolution.SkillTypes.Attack, strong, howMuch, turnFightController.Enemy.CalculatePercentageHealth(howMuch), turnFightController.Enemy.EnemyHealthImage);
-        soundManager.PlayClip(soundManager.PlayerSource, soundManager.PlayerCollection.clips[1], false);
+        //soundManager.PlayClip(soundManager.PlayerSource, soundManager.PlayerCollection.clips[1], false);
         turnFightController.Enemy.GetHit(howMuch);
     }
 
@@ -88,7 +90,7 @@ public class PlayerFightController : MonoBehaviour
 
         inDefenseMode = true;
         demageReduction = howMuch;
-        soundManager.PlayClip(soundManager.PlayerSource, soundManager.PlayerCollection.clips[0], false);
+        //soundManager.PlayClip(soundManager.PlayerSource, soundManager.PlayerCollection.clips[0], false);
         turnFightController.AttackAnim.PlayAnimation(SteelLotus.Dino.Evolution.SkillTypes.Defense, false, howMuch, 0, PlayerHealthImage);
     
     }
@@ -102,7 +104,7 @@ public class PlayerFightController : MonoBehaviour
             float demageSent = howMuch - howMuch * (demageReduction / 100f);
             howMuch = howMuch * (demageReduction / 100f);
             turnFightController.AttackAnim.PlayAnimation(SteelLotus.Dino.Evolution.SkillTypes.Attack, false, demageSent, turnFightController.Enemy.CalculatePercentageHealth(demageSent), turnFightController.Enemy.EnemyHealthImage, true);
-            soundManager.PlayClip(soundManager.PlayerSource, soundManager.PlayerCollection.clips[2], false);
+            //soundManager.PlayClip(soundManager.PlayerSource, soundManager.PlayerCollection.clips[2], false);
             turnFightController.Enemy.GetHit(demageSent);
         }
 
@@ -112,6 +114,9 @@ public class PlayerFightController : MonoBehaviour
         {
             playerHP = 0;
         }
+
+        if (reduceCooldown != null)
+            reduceCooldown.Invoke();
     }
 
     public float CalculatePercentageHealth(float howMuch)
