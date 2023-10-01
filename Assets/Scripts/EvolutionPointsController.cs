@@ -46,6 +46,9 @@ public class EvolutionPointsController : MonoBehaviour
     [SerializeField]
     private List<HighlightEffect> carvivoreUpgrades = new List<HighlightEffect>();
 
+    [SerializeField]
+    private PlayerPanel playerPanel;
+
     HighlightEffect workingAnimation;
 
     FightMainController mainController;
@@ -212,6 +215,9 @@ public class EvolutionPointsController : MonoBehaviour
 
     public void HighlightCorrectUpgrade(int upgradeIndex)
     {
+
+        Debug.Log($"Current upgrade step {(int)playerDinosour.CurrentEvolutionType}");
+
         if(workingAnimation != null)
         {
             workingAnimation.StopAnimation();
@@ -279,6 +285,9 @@ public class EvolutionPointsController : MonoBehaviour
 
     private void ChooseUpgrade(EvolutionType evolutionType, int level, bool turnOn = false)
     {
+
+        Debug.Log($"Level: {level}");
+
         switch (evolutionType)
         {
             case EvolutionType.Carnivore:
@@ -286,11 +295,14 @@ public class EvolutionPointsController : MonoBehaviour
                 {
                     MainGameController.Instance.Path.Add(0);
                     carvivoreUpgrades[level].UnlockUnlockedColor();
+                    playerPanel.SaveNewState(playerDinosour.CurrentPlayerEvolutionStep);
+                    break;
                 }
                 else
                 {
                     carvivoreUpgrades[level].StartAnimation();
                     workingAnimation = carvivoreUpgrades[level];
+                    playerPanel.Init(playerDinosour.GetNextStep(evolutionType));
                 }
                 break;
             case EvolutionType.Herbivore:
@@ -298,11 +310,13 @@ public class EvolutionPointsController : MonoBehaviour
                 {
                     MainGameController.Instance.Path.Add(2);
                     herbivoreUpgrades[level].UnlockUnlockedColor();
+                    playerPanel.SaveNewState(playerDinosour.CurrentPlayerEvolutionStep);
                 }
                 else
                 {
                     herbivoreUpgrades[level].StartAnimation();
                     workingAnimation = herbivoreUpgrades[level];
+                    playerPanel.Init(playerDinosour.GetNextStep(evolutionType));
                 }
                 break;
             case EvolutionType.Omnivore:
@@ -310,11 +324,13 @@ public class EvolutionPointsController : MonoBehaviour
                 {
                     MainGameController.Instance.Path.Add(1);
                     omnivoreUpgrades[level].UnlockUnlockedColor();
+                    playerPanel.SaveNewState(playerDinosour.CurrentPlayerEvolutionStep);
                 }
                 else
                 {
                     omnivoreUpgrades[level].StartAnimation();
                     workingAnimation = omnivoreUpgrades[level];
+                    playerPanel.Init(playerDinosour.GetNextStep(evolutionType));
                 }
                 break;
         }
@@ -327,6 +343,8 @@ public class EvolutionPointsController : MonoBehaviour
             workingAnimation.StopAnimation();
             workingAnimation = null;
         }
+
+        playerPanel.Deinit();
     }
 
     public void StartFight()

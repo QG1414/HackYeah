@@ -9,6 +9,12 @@ namespace SteelLotus.Dino.Evolution
     public class EvolutionStep : ScriptableObject
     {
         [SerializeField]
+        private string dinosourName;
+
+        [SerializeField]
+        private string dinosourDescription;
+
+        [SerializeField]
         private Sprite dinosourSprite;
 
         [SerializeField]
@@ -22,6 +28,10 @@ namespace SteelLotus.Dino.Evolution
 
         [SerializeField]
         private List<DinosourSkill> dinosourSkills = new List<DinosourSkill>();
+
+
+        public string DinosourName { get => dinosourName; set => dinosourName = value; }
+        public string DinosourDescription { get => dinosourDescription; set => dinosourDescription = value; }
 
         public Sprite DinosourSprite { get => dinosourSprite; set => dinosourSprite = value; }
         public float HP { get => hp; set => hp = value; }

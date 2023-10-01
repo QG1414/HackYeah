@@ -152,7 +152,7 @@ namespace SteelLotus.UI
             scenesController.WaitForInputAfterLoad = true;
             scenesController.NextSceneToLoad = gameScene;
             soundManager.StopAudio(soundManager.MusicSource);
-            scenesController.StartTransition(AnimationTypes.AnchoreMovement, () => SceneManager.LoadScene(loadingScene));
+            scenesController.StartTransition(AnimationTypes.AnchoreMovement, () => { SceneManager.LoadScene(loadingScene); scenesController.EndTransition(AnimationTypes.AnchoreMovement, null); });
 
         }
 

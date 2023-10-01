@@ -125,7 +125,7 @@ MonoBehaviour:
   delayDuration: 1
   mainScreenAnimation: {fileID: 9199045936214807305}
   infoDisplayerBlock: {fileID: 1155229134068743040}
-  gameScene: SampleScene
+  gameScene: Level1
   loadingScene: LoadingScene
 --- !u!114 &9199045936214807305
 MonoBehaviour:

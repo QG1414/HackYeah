@@ -51,11 +51,11 @@ public class AttackAnimations : MonoBehaviour
 
     public void PlayAnimation(SkillTypes skillType, bool strong, float damage, float percentageHealth, Image healthImage, bool ignorePass = false)
     {
-        if(turnFightController.PlayerTurn)
+        if (skillType == SkillTypes.Attack && turnFightController.PlayerTurn)
         {
             simpleAttackAnimation.transform.position = enemyDamagePosition;
         }
-        else
+        else if (skillType == SkillTypes.Attack)
         {
             simpleAttackAnimation.transform.position = playerDamagePosition;
         }
@@ -66,28 +66,32 @@ public class AttackAnimations : MonoBehaviour
                 if (strong)
                 {
                     strongAttackAnimation.StartAnimationOneTime(null);
-                    ShowDamageText(strongAttackAnimation,damage, percentageHealth, healthImage, ignorePass);
+                    ShowDamageText(strongAttackAnimation,damage, percentageHealth, healthImage, Color.red, ignorePass);
                 }
                 else
                 {
                     simpleAttackAnimation.StartAnimationOneTime(null);
-                    ShowDamageText(simpleAttackAnimation,damage, percentageHealth, healthImage, ignorePass);
+                    ShowDamageText(simpleAttackAnimation,damage, percentageHealth, healthImage, Color.red, ignorePass);
                 }
                 break;
             case SkillTypes.Heal:
-                HealAnimation.StartAnimationOneTime(() => turnFightController.PassMove());
+                HealAnimation.transform.position = playerDamagePosition;
+                HealAnimation.StartAnimationOneTime(null);
+                ShowDamageText(HealAnimation, damage, percentageHealth, healthImage, Color.green, ignorePass);
                 break;
             case SkillTypes.Defense:
+                DefenseAnimation.transform.position = playerDamagePosition;
                 DefenseAnimation.StartAnimationOneTime(() => turnFightController.PassMove());
                 break;
         }
 
     }
 
-    private void ShowDamageText(SpriteSwitch mainSwitch, float damage, float percentageHealth, Image healthImage, bool ignorePass = false)
+    private void ShowDamageText(SpriteSwitch mainSwitch, float damage, float percentageHealth, Image healthImage, Color textColor, bool ignorePass = false)
     {
 
         TMP_Text newTextDamage = Instantiate(damageText, mainSwitch.transform);
+        newTextDamage.color = textColor;
 
         newTextDamage.text = Mathf.RoundToInt(damage).ToString();
 
@@ -99,7 +103,7 @@ public class AttackAnimations : MonoBehaviour
 
         Vector2 endPosition = Vector2.zero;
 
-        if (turnFightController.PlayerTurn)
+        if (turnFightController.PlayerTurn && (mainSwitch == simpleAttackAnimation || mainSwitch == strongAttackAnimation))
         {
             endPosition = enemyDamagePosition;
         }
