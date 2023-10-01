@@ -37,8 +37,8 @@ public class PlayerPanel : MonoBehaviour
         dinosaurImage.sprite = currentEvolutionStep.DinosourSprite;
         dinosaurName.text = currentEvolutionStep.DinosourName;
         dinosaurDescription.text = currentEvolutionStep.DinosourDescription;
-        dinosaurAttack.text = currentEvolutionStep.BaseAttack.ToString();
-        dinosaurHP.text = currentEvolutionStep.HP.ToString();
+        dinosaurAttack.text = "ATK: " + currentEvolutionStep.BaseAttack.ToString();
+        dinosaurHP.text = "HP: " + currentEvolutionStep.HP.ToString();
     }
 
     public void Deinit()

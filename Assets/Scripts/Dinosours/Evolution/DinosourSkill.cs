@@ -29,6 +29,9 @@ namespace SteelLotus.Dino.Evolution
         [SerializeField]
         private SkillTypes skillType;
 
+        [SerializeField]
+        private int skillCooldown;
+
         private float levelMultiplayer = 20;
 
         public string SkillName { get => skillName; set => skillName = value; }
@@ -38,6 +41,7 @@ namespace SteelLotus.Dino.Evolution
         public float SkillHealing { get => skillHealing; set => skillHealing = value; }
         public float SkillDefance { get => skillDefance; set => skillDefance = value; }
         public SkillTypes SkillType { get => skillType; set => skillType = value; }
+        public int SkillCooldown { get => skillCooldown; set => skillCooldown = value; }
 
 
         public void IncreaseLevel()

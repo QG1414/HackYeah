@@ -116,6 +116,7 @@ MonoBehaviour:
   fightingScene: FightingArea
   loadingScene: LoadingScene
   mainGameScene: Level1
+  endScene: EndingScene
   enemyData:
   - {fileID: 11400000, guid: 2a82de4560a01fa4bb2be448e2301e0e, type: 2}
   - {fileID: 11400000, guid: 3a6fb7c6a4011144b885fc45a2713a6d, type: 2}
