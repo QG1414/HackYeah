@@ -20,8 +20,8 @@ namespace SteelLotus.Core.Settings
         [SerializeField, BoxGroup("Setting Buttons")]
         private Slider effectsVolumeSlider;
 
-        [SerializeField, BoxGroup("Setting Buttons")]
-        private TMP_Dropdown resolutionDropdown;
+       /* [SerializeField, BoxGroup("Setting Buttons")]
+        private TMP_Dropdown resolutionDropdown;*/
 
         [SerializeField, BoxGroup("Setting Buttons")]
         private Toggle fullscreenToggle;
@@ -42,7 +42,7 @@ namespace SteelLotus.Core.Settings
         public void SaveSettings()
         {
             settingsController.SaveSettings();
-            //soundManager.PlayOneShoot(soundManager.UISource, soundManager.UICollection.clips[0], 1f);
+            soundManager.PlayOneShoot(soundManager.UISource, soundManager.UICollection.clips[0], 1f);
         }
 
         public void VolumeChanged(Slider sliderChanged)
@@ -55,14 +55,14 @@ namespace SteelLotus.Core.Settings
         public void SetNewResolution()
         {
             //soundManager.PlayOneShoot(soundManager.UISource, soundManager.UICollection.clips[1], 0f);
-            string newResolution = resolutionDropdown.options[resolutionDropdown.value].text;
+           // string newResolution = resolutionDropdown.options[resolutionDropdown.value].text;
 
-            settingsController.ChangeGameResolution(newResolution);
+           // settingsController.ChangeGameResolution(newResolution);
         }
 
         public void SetFullscreen()
         {
-            //soundManager.PlayOneShoot(soundManager.UISource, soundManager.UICollection.clips[1], 0f);
+            soundManager.PlayOneShoot(soundManager.UISource, soundManager.UICollection.clips[1], 0f);
             settingsController.SetFullScreen(fullscreenToggle.isOn);
         }
 
@@ -75,7 +75,7 @@ namespace SteelLotus.Core.Settings
         {
             SettingsController settingsControllertemp = settingsController;
 
-            settingsControllertemp.SetupResolutions(resolutionDropdown);
+           //settingsControllertemp.SetupResolutions(resolutionDropdown);
 
             masterVolumeSlider.value = settingsControllertemp.MasterVolumeValue;
             VolumeChanged(masterVolumeSlider);
@@ -87,7 +87,7 @@ namespace SteelLotus.Core.Settings
             VolumeChanged(effectsVolumeSlider);
 
             fullscreenToggle.isOn = settingsControllertemp.FullscreenActive;
-
+/*
             for (int i = 0; i < resolutionDropdown.options.Count; i++)
             {
                 if (resolutionDropdown.options[i].text == settingsControllertemp.ScreenResolution)
@@ -95,7 +95,7 @@ namespace SteelLotus.Core.Settings
                     resolutionDropdown.value = i;
                     break;
                 }
-            }
+            }*/
         }
 
         private SoundTypes ChooseSoundType(Slider slider)
