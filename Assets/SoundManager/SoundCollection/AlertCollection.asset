@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db1d87eba487354abe157223c2d221e, type: 3}
   m_Name: AlertCollection
   m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: 4246bc8e7953dcc4b84e53ae5ca70472, type: 2}
+  mixer: {fileID: 24100000, guid: 87e7196d030f9024b92e1f088ad80ab5, type: 2}
   clips: []

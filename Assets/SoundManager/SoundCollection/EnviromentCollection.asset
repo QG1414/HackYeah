@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db1d87eba487354abe157223c2d221e, type: 3}
   m_Name: EnviromentCollection
   m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: cd807f63d91c15842b32679766b7b3bd, type: 2}
+  mixer: {fileID: 24100000, guid: 87e7196d030f9024b92e1f088ad80ab5, type: 2}
   clips:
   - {fileID: 8300000, guid: cab0216adfdbe93439f44676c6cada50, type: 3}
   - {fileID: 8300000, guid: d87e67ef608c9484d95b8a10cd7eed7d, type: 3}

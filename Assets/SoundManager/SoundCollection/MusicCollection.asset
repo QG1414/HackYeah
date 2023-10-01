@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db1d87eba487354abe157223c2d221e, type: 3}
   m_Name: MusicCollection
   m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: 4d17cb7d03371cd4e89b4ca48f51fe34, type: 2}
+  mixer: {fileID: 24100000, guid: 87e7196d030f9024b92e1f088ad80ab5, type: 2}
   clips:
   - {fileID: 8300000, guid: 6a27e800be7b47f43b30c505474c90f3, type: 3}
+  - {fileID: 8300000, guid: 6de1320923848fc4d97200b4ac3e7bf7, type: 3}
+  - {fileID: 8300000, guid: 60f9514d174be774d86d3b3c36b35215, type: 3}

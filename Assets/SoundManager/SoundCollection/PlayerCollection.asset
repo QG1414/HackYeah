@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db1d87eba487354abe157223c2d221e, type: 3}
   m_Name: PlayerCollection
   m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: a525379f2d0800140a50199926db0dae, type: 2}
-  clips: []
+  mixer: {fileID: 24100000, guid: 87e7196d030f9024b92e1f088ad80ab5, type: 2}
+  clips:
+  - {fileID: 8300000, guid: 23cd9b60aece3384986f5e9ebc47263d, type: 3}
+  - {fileID: 8300000, guid: 06ceb503d0c89d045afff69c6068a586, type: 3}
+  - {fileID: 8300000, guid: 902d0d40614a5fa46be5030da4b2ceae, type: 3}
+  - {fileID: 8300000, guid: 4af7e9c9e99a26144addd82640868c10, type: 3}

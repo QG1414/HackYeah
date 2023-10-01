@@ -38,17 +38,20 @@ public class TurnFightController : MonoBehaviour
     {
         fightMainControler = MainGameController.Instance.GetFieldByType<FightMainController>();
         soundManager = MainGameController.Instance.GetFieldByType<SoundManager>();
-
+        
 
         enemyController.Init(fightMainControler.EnemyDataProperty[fightMainControler.EnemyIndex], this);
         playerFightController.Init(playerEvolutionStep,this);
+        //soundManager.UnMuteAll();
+        soundManager.MusicSource.UnPause();
+        soundManager.PlayClip(soundManager.MusicSource, soundManager.MusicCollection.clips[1], true);
     }
 
 
     public void StartFight()
     {
         fightInProgress = true;
-        soundManager.PlayClip(soundManager.MusicSource, soundManager.MusicCollection.clips[1], true);
+        
     }
 
     public void PassMove()
@@ -64,7 +67,7 @@ public class TurnFightController : MonoBehaviour
         if (!playerFightController.CheckIfAlive())
         {
             playerFightController.BlockInteraction(false);
-            soundManager.StopAudio(soundManager.MusicSource);
+            soundManager.PlayClip(soundManager.MusicSource, soundManager.MusicCollection.clips[2],true);
             gameOverScreen.StartScreen();
             return;
         }
